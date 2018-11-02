@@ -1,5 +1,5 @@
 from AppPack import info
-from flask import Flask
+from flask import Flask , render_template
 app = Flask(__name__)
 
 infoNames = info.quickInfo()
@@ -12,26 +12,13 @@ for i in range(len(infoNames)): #this loop adds the <h1> tag for every index in 
     elif (i > 1): #this appends all the other indexes in the list to infoNames2 after including the <h1> tag
         infoNames2 = infoNames2 + '<h1>{}</h1>'.format(infoNames[i])
 
-# this capitalizes the first letter of the profession name
-profName = infoNames[0]
-firstCap = profName[0].upper() + profName[1:]
-allCap = profName.upper()
+profName = infoNames[0] #extracts out the profName
+del infoNames[0]    #deletes the profName
 
 @app.route('/')
 @app.route('/info')
 def output():
-    return '''
-    <html>
-    <head>
-    <title>Quick Info: {0}</title>
-    </head>
-    <meta http-equiv="refresh" content="1" />
-    <body>
-    <h1>----------{1}----------</h1>
-    {2}
-    </body>
-    </html>
-    '''.format(firstCap , allCap , infoNames2)
+    return render_template('quickInfo.html' , profName=profName , infoNames=infoNames)
 
 
 
