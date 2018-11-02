@@ -2,15 +2,13 @@ from AppPack import info
 from flask import Flask , render_template
 app = Flask(__name__)
 
-infoNames = info.quickInfo()
-
-profName = infoNames[0] #extracts out the profName b4 deletion
-del infoNames[0]    #deletes the profName
+profName = info.index[0] #extracts out the profName b4 deletion
+del info.index[0]    #deletes the profName
 
 @app.route('/')
 @app.route('/info')
 def output():
-    return render_template('quickInfo.html' , profName=profName , infoNames=infoNames)
+    return render_template('quickInfo.html' , profName=profName , index=info.index)
 
 
 
