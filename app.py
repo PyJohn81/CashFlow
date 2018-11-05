@@ -2,6 +2,8 @@ from AppPack import info
 from flask import Flask , render_template , url_for
 app = Flask(__name__)
 
+app.config['SECRET KEY'] = 'e976d98a104d9186edffa0bbb37aa4c7'
+
 profName = info.index[0] #extracts out the profName b4 deletion
 del info.index[0]    #deletes the profName
 
