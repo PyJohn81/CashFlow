@@ -1,8 +1,6 @@
 def main():
 
-    from package import readVariable
-    from package import events
-    from package import loadGame
+    from package import readVariable , events , loadGame
 
     def start():
         action = input("What would you like to do? \n(Access quick info = 0/info | Enter new event = event | Manually change or remove variable value = change/remove | View variable value = view/read | Start new game = new | Create profession datafile = prof | Access superuser terminal = terminal):\n")
